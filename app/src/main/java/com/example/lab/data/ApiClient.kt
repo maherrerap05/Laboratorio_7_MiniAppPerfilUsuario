@@ -7,6 +7,6 @@ object ApiClient {
     // Simula una llamada de red
     suspend fun fetchUser(): User {
         delay(1500) //simula latencia
-        return User.fromEmail("estudiante@puce.edu.ec")
+        return User.fromEmail("guest@system.local")
     }
 }

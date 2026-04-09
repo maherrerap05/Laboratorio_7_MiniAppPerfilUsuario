@@ -14,6 +14,7 @@ fun UserScreen(state:UiState) {
         is UiState.Loading -> LoadingView()
         is UiState.Success -> UserView(state.user)
         is UiState.Error -> ErrorView(state.message)
+        is UiState.Empty -> EmptyView(state.user, state.message)
     }
 }
 
@@ -49,3 +50,14 @@ fun ErrorView(message: String) {
     }
 }
 
+@Composable
+fun EmptyView(user: User, message: String) {
+    Column (
+        modifier = Modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(message)
+        Spacer(Modifier.height(8.dp))
+        Text("ID: ${user.email}")
+    }
+}

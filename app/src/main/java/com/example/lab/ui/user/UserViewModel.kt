@@ -19,7 +19,12 @@ class UserViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val user = ApiClient.fetchUser()
-                _state.value = UiState.Success(user)
+
+                if (user.email == "guest@system.local") {
+                    _state.value = UiState.Empty(user, "Usuario invitado")
+                } else {
+                    _state.value = UiState.Success(user)
+                }
             } catch (e: Exception) {
                 _state.value = UiState.Error("No se pudo cargar el usuario.")
             }

@@ -6,4 +6,5 @@ sealed class UiState {
     data object Loading: UiState()
     data class Success(val user:User): UiState()
     data class Error(val message:String): UiState()
+    data class Empty(val user:User, val message:String) : UiState()
 }
